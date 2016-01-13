@@ -1,3 +1,5 @@
+require 'chef'
+
 module Ridley
   class EnvironmentResource < Ridley::Resource
     set_resource_path "environments"
@@ -32,6 +34,16 @@ module Ridley
     def delete_all
       envs = all.reject { |env| env.name.to_s == '_default' }
       envs.collect { |resource| future(:delete, resource) }.map(&:value)
+    end
+
+    def from_file(filename)
+      if filename =~ /\.rb$/
+        n_env = ::Chef::Environment.new
+        n_env.from_file filename
+        new(n_env.to_hash)
+      else
+        super
+      end
     end
   end
 end
