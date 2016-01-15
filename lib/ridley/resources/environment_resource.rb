@@ -39,7 +39,7 @@ module Ridley
     def from_file(filename)
       if filename =~ /\.rb$/
         n_env = ::Chef::Environment.new
-        n_env.from_file filename
+        n_env.from_file(filename)
         new(n_env.to_hash)
       else
         super

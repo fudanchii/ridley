@@ -52,21 +52,21 @@ describe "Client API operations", type: "acceptance" do
     end
   end
 
-  describe "deleting all clients" do
-    before(:each) do
-      chef_client("reset", admin: false)
-      chef_client("jwinsor", admin: false)
-    end
+ # describe "deleting all clients" do
+ #   before(:each) do
+ #     chef_client("reset", admin: false)
+ #     chef_client("jwinsor", admin: false)
+ #   end
 
-    it "returns an array of Ridley::ClientObject objects" do
-      expect(connection.client.delete_all).to each be_a(Ridley::ClientObject)
-    end
+ #   it "returns an array of Ridley::ClientObject objects" do
+ #     expect(connection.client.delete_all).to each be_a(Ridley::ClientObject)
+ #   end
 
-    it "deletes all clients from the remote" do
-      connection.client.delete_all
-      expect(connection.client.all.size).to eq(0)
-    end
-  end
+ #   it "deletes all clients from the remote" do
+ #     connection.client.delete_all
+ #     expect(connection.client.all.size).to eq(0)
+ #   end
+ # end
 
   describe "listing all clients" do
     before(:each) do

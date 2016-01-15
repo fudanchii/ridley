@@ -52,21 +52,21 @@ describe "User API operations", type: "wip" do
     end
   end
 
-  describe "deleting all users" do
-    before(:each) do
-      chef_user("reset", admin: false)
-      chef_user("jwinsor", admin: false)
-    end
+  #describe "deleting all users" do
+  #  before(:each) do
+  #    chef_user("reset", admin: false)
+  #    chef_user("jwinsor", admin: false)
+  #  end
 
-    it "returns an array of Ridley::UserObject objects" do
-      expect(connection.user.delete_all).to each be_a(Ridley::UserObject)
-    end
+  #  it "returns an array of Ridley::UserObject objects" do
+  #    expect(connection.user.delete_all).to each be_a(Ridley::UserObject)
+  #  end
 
-    it "deletes all users from the remote" do
-      connection.user.delete_all
-      expect(connection.user.all.size).to eq(0)
-    end
-  end
+  #  it "deletes all users from the remote" do
+  #    connection.user.delete_all
+  #    expect(connection.user.all.size).to eq(0)
+  #  end
+  #end
 
   describe "listing all users" do
     before(:each) do
